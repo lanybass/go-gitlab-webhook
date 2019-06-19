@@ -52,6 +52,7 @@ type Config struct {
   Address string
   Port int64
   Repositories []ConfigRepository
+  Secret string
 }
 
 func PanicIf(err error, what ...string) {
@@ -143,7 +144,13 @@ func hookHandler(w http.ResponseWriter, r *http.Request) {
       log.Println(r)
     }
   }()
-  
+
+  if config.Secret != "" {
+    if config.Secret != r.Header.Get("X-Gitlab-Token") {
+      PanicIf(errors.New("Invalid token"), "X-Gitlab-Token is different than specified in config")
+    }
+  }
+
   var hook Webhook
 
   //read request body
