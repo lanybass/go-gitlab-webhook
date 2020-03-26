@@ -15,6 +15,24 @@
       "commands": [
         "/usr/bin/true"
       ]
+    },
+    {
+      "name": "youbuy_api",
+      "commands": [
+        "/bin/sh /home/www/go-gitlab-webhook/scripts/pullymgapi.sh"
+      ]
+    },
+    {
+      "name": "youbuy_merchant",
+      "commands": [
+        "/bin/sh /home/www/go-gitlab-webhook/scripts/pullymgmerchant.sh"
+      ]
+    },
+    {
+      "name": "kuaishan0_admin",
+      "commands": [
+        "/bin/sh /home/www/go-gitlab-webhook/scripts/pullymgadmin.sh"
+      ]
     }
   ]
 }
